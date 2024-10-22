@@ -7,15 +7,13 @@ int main(int argc, char** argv) {
     return 1;
   }
 
-  SDL_Window* window = SDL_CreateWindow("Uepa", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, SDL_WINDOW_SHOWN);
+  SDL_Window* window = SDL_CreateWindow("Uepa", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN);
 
   SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
 
-  SDL_Surface* surface = SDL_LoadBMP("./gojo.bmp");
+  SDL_Surface* surface = SDL_LoadBMP("../gojo.bmp");
   SDL_Texture* gojo = SDL_CreateTextureFromSurface(renderer, surface);
   SDL_FreeSurface(surface);
-
-  SDL_SetRenderDrawColor(renderer, 20, 20, 200, 255);
 
   SDL_Rect rect, rect2;
 
@@ -23,8 +21,8 @@ int main(int argc, char** argv) {
   rect.y = 20;
   // rect.w = surface->w;
   // rect.h = surface->h;
-  rect.w = 1240;
-  rect.h = 680;
+  rect.w = 760;
+  rect.h = 760;
 
   rect2.x = 300;
   rect2.y = 300;
@@ -48,9 +46,9 @@ int main(int argc, char** argv) {
     SDL_RenderClear(renderer);
     SDL_RenderCopy(renderer, gojo, NULL, &rect);
     SDL_SetRenderDrawColor(renderer, 150, 20, 20, 255);
-    // SDL_RenderDrawRect(renderer, &rect2);
-    SDL_RenderFillRect(renderer, &rect2);
-    SDL_SetRenderDrawColor(renderer, 20, 20, 200, 255);
+    SDL_RenderDrawRect(renderer, &rect2);
+    // SDL_RenderFillRect(renderer, &rect2);
+    SDL_SetRenderDrawColor(renderer, 20, 20, 20, 255);
     SDL_RenderPresent(renderer);
   }
 
