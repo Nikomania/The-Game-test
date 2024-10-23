@@ -33,7 +33,9 @@ int main(int argc, char** argv) {
   rect2.h = 100;
 
   bool isDone = false;
-  while (!isDone) {
+  // int times_moved = 0;
+  while (!isDone)
+  {
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
       switch (event.type) {
@@ -44,6 +46,9 @@ int main(int argc, char** argv) {
         case SDL_MOUSEBUTTONDOWN:
           rect2.x -= 20;
           break;
+        // case SDL_MOUSEMOTION:
+        //   SDL_Log("Moused moved %d times\n", ++times_moved);
+        //   break;
       }
     }
 
