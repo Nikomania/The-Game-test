@@ -1,4 +1,5 @@
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include <iostream>
 
 int main(int argc, char** argv) {
@@ -11,9 +12,11 @@ int main(int argc, char** argv) {
 
   SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
 
-  SDL_Surface* surface = SDL_LoadBMP("../gojo.bmp");
-  SDL_Texture* gojo = SDL_CreateTextureFromSurface(renderer, surface);
-  SDL_FreeSurface(surface);
+  // SDL_Surface* surface = SDL_LoadBMP("../gojo.bmp");
+  // SDL_Texture* gojo = SDL_CreateTextureFromSurface(renderer, surface);
+  // SDL_FreeSurface(surface);
+
+  SDL_Texture * gojo = IMG_LoadTexture(renderer, "../gojo.jpeg"); 
 
   SDL_Rect rect, rect2;
 
@@ -36,6 +39,7 @@ int main(int argc, char** argv) {
       switch (event.type) {
         case SDL_QUIT:
           isDone = true;
+          // SDL_Log("Program quit after %i ticks", event.quit.timestamp);
           break;
         case SDL_MOUSEBUTTONDOWN:
           rect2.x -= 20;
